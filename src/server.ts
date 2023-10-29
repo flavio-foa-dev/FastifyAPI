@@ -1,15 +1,17 @@
-import fastify from "fastify";
+import fastify from 'fastify';
+import { KnexConect } from './db/database.js';
 
-const app = fastify()
+const app = fastify();
 
-app.get("/hello", () => {
-  return "Hello Flavio"
-})
+app.get('/test', async () => {
+  const table = await KnexConect('sqlite_schema').select('*');
+  return{message: 'Hello Flavio', table};
+});
 
 app.listen({
-  port: 33333
+  port: 3333
 }).then(() => {
-  console.log("listening on port 33333")
+  console.log('listening on port 3333');
 }).catch((error) => {
-console.log("error: ", error.message)
-})
+  console.log('error: ', error.message);
+});
