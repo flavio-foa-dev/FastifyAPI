@@ -8,6 +8,11 @@ app.get('/test', async () => {
   return{message: 'Hello Flavio', table};
 });
 
+app.get('/transaction', async () => {
+  const table = await KnexConect('sqlite_schema').select('*');
+  return{message: 'Hello Flavio', table};
+});
+
 app.listen({
   port: 3333
 }).then(() => {
