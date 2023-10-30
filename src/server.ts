@@ -1,5 +1,7 @@
 import fastify from 'fastify';
 import { KnexConect } from './db/database.js';
+import { env } from './env/index.js';
+
 
 const app = fastify();
 
@@ -9,12 +11,12 @@ app.get('/test', async () => {
 });
 
 app.get('/transaction', async () => {
-  const table = await KnexConect('sqlite_schema').select('*');
-  return{message: 'Hello Flavio', table};
+  const table = await KnexConect('transaction').select('*');
+  return table;
 });
 
 app.listen({
-  port: 3333
+  port: env.PORT
 }).then(() => {
   console.log('listening on port 3333');
 }).catch((error) => {
