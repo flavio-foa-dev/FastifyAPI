@@ -1,6 +1,7 @@
 import fastify from 'fastify';
 import { KnexConect } from './db/database.js';
 import { env } from './env/index.js';
+import { transactionRoutes } from './routes/routeTransaction.js';
 
 
 const app = fastify();
@@ -10,9 +11,8 @@ app.get('/test', async () => {
   return{message: 'Hello Flavio', table};
 });
 
-app.get('/transaction', async () => {
-  const table = await KnexConect('transaction').select('*');
-  return table;
+app.register(transactionRoutes,{
+  prefix: 'transactions',
 });
 
 app.listen({
