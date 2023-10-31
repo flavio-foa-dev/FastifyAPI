@@ -1,6 +1,6 @@
 import {afterAll, beforeAll, beforeEach, describe, expect, it} from 'vitest';
 import supertest from 'supertest';
-import { app } from '../../app.js';
+import { app } from '../../src/app.js';
 import { execSync } from 'node:child_process';
 
 describe('Transactions routes', () => {
