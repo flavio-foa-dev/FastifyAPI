@@ -10,7 +10,7 @@ export async function transactionRoutes(app: FastifyInstance){
     next();
   });
 
-  app.get('/',{preHandler: [checkSessionIdentity]}, async (request, reply) => {
+  app.get('/',{preHandler: [checkSessionIdentity]}, async (request) => {
     const sessionId = request.cookies.sessionId;
     const transactions = await KnexConect('transaction')
       .where('session_Id', sessionId)
