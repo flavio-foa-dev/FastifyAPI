@@ -4,7 +4,7 @@
   "description": "Nodejs | API Rest | MySQL | Fastify",
   "main": "index.js",
   "engines": {
-    "node": ">= 18"
+    "node": ">=18"
   },
   "scripts": {
     "test": "vitest",
